@@ -40,4 +40,14 @@ public class Morpion {
                     line = board[2] + board[4] + board[6];
                     break;
             }
+
+            if(line.equals("XXX")){
+                return "X";
+            }
+
+
+            if(line.equals("OOO")){
+                return "O";
+            }
+        }
 }
