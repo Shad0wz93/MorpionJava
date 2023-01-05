@@ -45,6 +45,23 @@ public class Morpion {
                 continue;
             }
 
+            //décide du tour entre X et O
+            if(board[numInput - 1].equals(String.valueOf(numInput))){
+                board[numInput - 1] = turn;
+
+                if(turn.equals("X")){
+                    turn = "O";
+                }
+                else{
+                    turn = "X";
+                }
+
+                printBoard();
+                winner = checkWinner();
+            }
+            else{
+                System.out.println("Case deja remplie. Selectionne une autre case :");
+            }
 
         }
     }
