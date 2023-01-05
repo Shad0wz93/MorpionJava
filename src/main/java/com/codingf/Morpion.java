@@ -64,6 +64,11 @@ public class Morpion {
             }
 
         }
+
+        //si personne ne gagne
+        if(winner.equalsIgnoreCase("draw")){
+            System.out.println("Egalite ! Merci d'avoir joue.");
+        }
     }
 
 }
