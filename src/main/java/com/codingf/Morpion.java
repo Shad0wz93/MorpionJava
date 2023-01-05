@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 package com.codingf;
@@ -23,6 +24,29 @@ public class Morpion {
         printBoard();
 
         System.out.println("Joueur 1 possede les pions X. Choisis une case :");
+
+
+        while(winner==null){
+
+            int numInput;
+
+            //gère les exceptions pour les inputs
+            try{
+                numInput = in.nextInt();
+
+                if(!(numInput>0 && numInput <= 9)){
+                    System.out.println("Invalide. Reessaye :");
+                    continue;
+                }
+            }
+            catch(InputMismatchException e){
+                System.out.println("Invalide. Reessaye :");
+                in.nextLine();
+                continue;
+            }
+
+
+        }
     }
 
 }
