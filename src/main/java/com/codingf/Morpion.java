@@ -90,7 +90,11 @@ public class Morpion {
             board[a] = String.valueOf( a + 1 );
         }
 
-        System.out.println("Bienvenue");
+        System.out.println("Bienvenue !");
+        System.out.println("Voici les règles du jeu : ");
+        System.out.println("Se joue à 2 joueurs: X pour joueur 1 et O pour joueur 2.");
+        System.out.println("Pour gagner : réaliser le premier alignement horizontal, vertical ou diagonale.");
+        System.out.println("Si égalité, la partie s'arrête.");
         printBoard();
 
         System.out.println("Joueur 1 possede les pions X. Choisis une case :");
