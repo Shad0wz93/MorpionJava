@@ -1,9 +1,10 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Arrays;
 
 package com.codingf;
 
-import java.util.Arrays;
+
 
 public class Morpion {
 
@@ -68,10 +69,6 @@ public class Morpion {
     }
 
 }
-
-    static String[] board;
-
-    static String turn;
 
     public static void main(String[] args){
 
