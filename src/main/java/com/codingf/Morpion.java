@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 package com.codingf;
 
-
-
 public class Morpion {
 
     static String[] board;
@@ -68,7 +66,7 @@ public class Morpion {
         return null;
     }
 
-}
+
 
     public static void main(String[] args){
 
