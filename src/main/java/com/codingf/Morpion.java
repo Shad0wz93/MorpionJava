@@ -1,8 +1,6 @@
 package com.codingf;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Morpion {
 
@@ -50,4 +48,20 @@ public class Morpion {
                 return "O";
             }
         }
+        for(int a=0; a < 9; a++){
+            if(Arrays.asList(board).contains(String.valueOf(a + 1))){
+                break;
+            }
+            else if(a == 8) {
+                return "draw";
+            }
+        }
+
+        System.out.println(
+                turn + "'s turn. Enter a slot number to place " + turn + " in :"
+        );
+
+        return null;
+    }
+
 }
