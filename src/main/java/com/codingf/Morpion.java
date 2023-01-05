@@ -69,6 +69,11 @@ public class Morpion {
         if(winner.equalsIgnoreCase("draw")){
             System.out.println("Egalite ! Merci d'avoir joue.");
         }
+
+        //message pour le gagnant
+        else{
+            System.out.println("Felicitations ! " + winner + " gagne la partie. Merci d'avoir joue !");
+        }
     }
 
 }
