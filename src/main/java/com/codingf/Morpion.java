@@ -1,8 +1,8 @@
+package com.codingf;
+
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Arrays;
-
-package com.codingf;
 
 public class Morpion {
 
@@ -41,15 +41,17 @@ public class Morpion {
                     break;
             }
 
+            //for X winner
             if(line.equals("XXX")){
                 return "X";
             }
 
-
+            //for O winner
             if(line.equals("OOO")){
                 return "O";
             }
         }
+
         for(int a=0; a < 9; a++){
             if(Arrays.asList(board).contains(String.valueOf(a + 1))){
                 break;
@@ -66,7 +68,16 @@ public class Morpion {
         return null;
     }
 
+    static void printBoard(){
 
+        System.out.println("+---+---+---+");
+        System.out.println("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");
+        System.out.println("|---+---+---|");
+        System.out.println("| " + board[3] + " | " + board[4] + " | " + board[5] + " |");
+        System.out.println("|---+---+---|");
+        System.out.println("| " + board[6] + " | " + board[7] + " | " + board[8] + " |");
+        System.out.println("+---+---+---+");
+    }
 
     public static void main(String[] args){
 
@@ -84,12 +95,9 @@ public class Morpion {
 
         System.out.println("Joueur 1 possede les pions X. Choisis une case :");
 
-
-        while(winner==null){
-
+        while(winner == null){
             int numInput;
 
-            //gère les exceptions pour les inputs
             try{
                 numInput = in.nextInt();
 
@@ -98,13 +106,13 @@ public class Morpion {
                     continue;
                 }
             }
+
             catch(InputMismatchException e){
                 System.out.println("Invalide. Reessaye :");
-                in.nextLine();
                 continue;
             }
 
-            //décide du tour entre X et O
+            //dÃ©cide du tour entre X et O
             if(board[numInput - 1].equals(String.valueOf(numInput))){
                 board[numInput - 1] = turn;
 
@@ -134,6 +142,4 @@ public class Morpion {
             System.out.println("Felicitations ! " + winner + " gagne la partie. Merci d'avoir joue !");
         }
     }
-
 }
-
