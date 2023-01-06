@@ -8,12 +8,24 @@ public class Morpion {
 
     static String[] board;
     static String turn;
+    private static Player player1;
+    private static Player player2;
 
+    //entrer le nom du joueur
+    private static Player takePlayerInput(int num){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Entrez le nom du joueur " + num + " :");
+        String name = s.nextLine();
+        Player p = new Player(name);
+        return p;
+    }
+    //fonction pour verifier si tu as gagné
     static String checkWinner() {
 
         for(int a=0; a<8; a++){
             String line = null;
 
+            //toutes les possibilitées de gagner
             switch(a){
                 case 0:
                     line = board[0] + board[1] + board[2];
@@ -41,17 +53,17 @@ public class Morpion {
                     break;
             }
 
-            //for X winner
+            //pour X gagnant
             if(line.equals("XXX")){
-                return "X";
+                return player1.getName();
             }
 
-            //for O winner
+            //pour O gagnant
             if(line.equals("OOO")){
-                return "O";
+                return player2.getName();
             }
         }
-
+        // en cas d'égalitée
         for(int a=0; a < 9; a++){
             if(Arrays.asList(board).contains(String.valueOf(a + 1))){
                 break;
@@ -61,27 +73,26 @@ public class Morpion {
             }
         }
 
-        System.out.println(
-                "Au tour de " + turn + ". Entre un nombre pour placer " + turn + " :"
-        );
-
         return null;
     }
 
+    //affichage du tableau
     static void printBoard(){
-
-        System.out.println("+---+---+---+");
-        System.out.println("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");
-        System.out.println("|---+---+---|");
-        System.out.println("| " + board[3] + " | " + board[4] + " | " + board[5] + " |");
-        System.out.println("|---+---+---|");
-        System.out.println("| " + board[6] + " | " + board[7] + " | " + board[8] + " |");
-        System.out.println("+---+---+---+");
+        System.out.println("╔═══╦═══╦═══╗");
+        System.out.println("║ " + board[0] + " ║ " + board[1] + " ║ " + board[2] + " ║");
+        System.out.println("║═══╬═══╬═══║");
+        System.out.println("║ " + board[3] + " ║ " + board[4] + " ║ " + board[5] + " ║");
+        System.out.println("║═══╬═══╬═══║");
+        System.out.println("║ " + board[6] + " ║ " + board[7] + " ║ " + board[8] + " ║");
+        System.out.println("╚═══╩═══╩═══╝");
     }
 
+    //fonction qui fait marcher le jeu
     public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
+        player1 = takePlayerInput(1);
+        player2 = takePlayerInput(2);
         board = new String[9];
         turn = "X";
         String winner = null;
@@ -97,53 +108,60 @@ public class Morpion {
         System.out.println("Si égalité, la partie s'arrête.");
         printBoard();
 
-        System.out.println("Joueur 1 possede les pions X. Choisis une case :");
+        System.out.println(player1.getName() + " possède les pions X. Choisis une case :");
 
         while(winner == null){
             int numInput;
-
+            //Si mauvais chiffre utilisé reessayer
             try{
                 numInput = in.nextInt();
 
                 if(!(numInput>0 && numInput <= 9)){
-                    System.out.println("Invalide. Reessaye :");
+                    System.out.println("Invalide. Réessayez :");
                     continue;
                 }
             }
-
+            //si lettre selectionnée ressayer
             catch(InputMismatchException e){
-                System.out.println("Invalide. Reessaye :");
-                continue;
+                System.out.println("Invalide. Réessayez :");
+                break;
+
             }
 
-            //dÃ©cide du tour entre X et O
+            //décide du tour entre X et O
             if(board[numInput - 1].equals(String.valueOf(numInput))){
                 board[numInput - 1] = turn;
-
-                if(turn.equals("X")){
-                    turn = "O";
-                }
-                else{
-                    turn = "X";
-                }
-
                 printBoard();
                 winner = checkWinner();
+
+                if(turn.equals("X") && winner == null){
+                    turn = "O";
+                    System.out.println(
+                            "Au tour de " + player2.getName() + ". Entrer un nombre pour placer " + turn + " :"
+                    );
+                }
+                else if (turn.equals("O") && winner == null){
+                    turn = "X";
+                    System.out.println(
+                            "Au tour de " + player1.getName() + ". Entrer un nombre pour placer " + turn + " :"
+                    );
+                }
+
             }
             else{
-                System.out.println("Case deja remplie. Selectionne une autre case :");
+                System.out.println("Case déjà remplie. Sélectionnez une autre case :");
             }
 
         }
 
         //si personne ne gagne
         if(winner.equalsIgnoreCase("draw")){
-            System.out.println("Egalite ! Merci d'avoir joue.");
+            System.out.println("Egalité ! Merci d'avoir joué ( vous etes tout les deux des crackes)");
         }
 
         //message pour le gagnant
         else{
-            System.out.println("Felicitations ! " + winner + " gagne la partie. Merci d'avoir joue !");
+            System.out.println("Félicitations ! " + winner + " gagne la partie. Merci d'avoir jouez !");
         }
     }
 }
