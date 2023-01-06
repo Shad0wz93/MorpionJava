@@ -121,7 +121,7 @@ public class Morpion {
 
             catch(InputMismatchException e){
                 System.out.println("Invalide. Réessaye :");
-                continue;
+                break;
             }
 
             //décide du tour entre X et O
@@ -147,7 +147,7 @@ public class Morpion {
                 winner = checkWinner();
             }
             else{
-                System.out.println("Case déjà remplie. Sélectionne une autre case :");
+                System.out.println("Case déjà remplie. Sélectionnez une autre case :");
             }
 
         }
