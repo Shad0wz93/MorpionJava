@@ -114,19 +114,21 @@ public class Morpion {
                 numInput = in.nextInt();
 
                 if(!(numInput>0 && numInput <= 9)){
-                    System.out.println("Invalide. Reessaye :");
+                    System.out.println("Invalide. Réessaye :");
                     continue;
                 }
             }
 
             catch(InputMismatchException e){
-                System.out.println("Invalide. Reessaye :");
+                System.out.println("Invalide. Réessaye :");
                 continue;
             }
 
             //décide du tour entre X et O
             if(board[numInput - 1].equals(String.valueOf(numInput))){
                 board[numInput - 1] = turn;
+
+                printBoard();
 
                 if(turn.equals("X")){
                     turn = "O";
@@ -141,7 +143,7 @@ public class Morpion {
                     );
                 }
 
-                printBoard();
+
                 winner = checkWinner();
             }
             else{
