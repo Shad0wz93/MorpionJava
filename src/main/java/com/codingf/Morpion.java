@@ -11,6 +11,7 @@ public class Morpion {
     private static Player player1;
     private static Player player2;
 
+    //entrer le nom du joueur
     private static Player takePlayerInput(int num){
         Scanner s = new Scanner(System.in);
         System.out.println("Entrez le nom du joueur " + num + " :");
@@ -18,12 +19,13 @@ public class Morpion {
         Player p = new Player(name);
         return p;
     }
-
+    //fonction pour verifier si tu as gagné
     static String checkWinner() {
 
         for(int a=0; a<8; a++){
             String line = null;
 
+            //toutes les possibilitées de gagner
             switch(a){
                 case 0:
                     line = board[0] + board[1] + board[2];
@@ -51,17 +53,17 @@ public class Morpion {
                     break;
             }
 
-            //for X winner
+            //pour X gagnant
             if(line.equals("XXX")){
                 return player1.getName();
             }
 
-            //for O winner
+            //pour O gagnant
             if(line.equals("OOO")){
                 return player2.getName();
             }
         }
-
+        // en cas d'égalitée
         for(int a=0; a < 9; a++){
             if(Arrays.asList(board).contains(String.valueOf(a + 1))){
                 break;
@@ -74,6 +76,7 @@ public class Morpion {
         return null;
     }
 
+    //affichage du tableau
     static void printBoard(){
         System.out.println("╔═══╦═══╦═══╗");
         System.out.println("║ " + board[0] + " ║ " + board[1] + " ║ " + board[2] + " ║");
@@ -84,6 +87,7 @@ public class Morpion {
         System.out.println("╚═══╩═══╩═══╝");
     }
 
+    //fonction qui fait marcher le jeu
     public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
@@ -108,7 +112,7 @@ public class Morpion {
 
         while(winner == null){
             int numInput;
-            //Si mauvais chiffre utilisé reessayez
+            //Si mauvais chiffre utilisé reessayer
             try{
                 numInput = in.nextInt();
 
@@ -117,7 +121,7 @@ public class Morpion {
                     continue;
                 }
             }
-            //si lettre selectionnée ressayez
+            //si lettre selectionnée ressayer
             catch(InputMismatchException e){
                 System.out.println("Invalide. Réessayez :");
                 break;
@@ -152,12 +156,12 @@ public class Morpion {
 
         //si personne ne gagne
         if(winner.equalsIgnoreCase("draw")){
-            System.out.println("Egalité ! Merci d'avoir joué ( vous etes tout les deux des crackes");
+            System.out.println("Egalité ! Merci d'avoir joué ( vous etes tout les deux des crackes)");
         }
 
         //message pour le gagnant
         else{
-            System.out.println("Félicitations ! " + winner + " gagne la partie. Merci d'avoir joue !");
+            System.out.println("Félicitations ! " + winner + " gagne la partie. Merci d'avoir jouez !");
         }
     }
 }
