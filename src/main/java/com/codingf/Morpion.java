@@ -11,6 +11,7 @@ public class Morpion {
     private static Player player1;
     private static Player player2;
 
+
     //entrer le nom du joueur
     private static Player takePlayerInput(int num){
         Scanner s = new Scanner(System.in);
@@ -163,5 +164,6 @@ public class Morpion {
         else{
             System.out.println("Félicitations ! " + winner + " gagne la partie. Merci d'avoir jouez !");
         }
+
     }
 }
