@@ -104,7 +104,7 @@ public class Morpion {
         System.out.println("Si égalité, la partie s'arrête.");
         printBoard();
 
-        System.out.println(player1.getName() + " possede les pions X. Choisis une case :");
+        System.out.println(player1.getName() + " possède les pions X. Choisis une case :");
 
         while(winner == null){
             int numInput;
@@ -113,45 +113,46 @@ public class Morpion {
                 numInput = in.nextInt();
 
                 if(!(numInput>0 && numInput <= 9)){
-                    System.out.println("Invalide. Reessaye :");
+                    System.out.println("Invalide. Reessayez :");
                     continue;
                 }
             }
 
             catch(InputMismatchException e){
-                System.out.println("Invalide. Reessaye :");
-                continue;
+                System.out.println("Invalide. Reessayez :");
+                break;
+
             }
 
             //décide du tour entre X et O
             if(board[numInput - 1].equals(String.valueOf(numInput))){
                 board[numInput - 1] = turn;
-
-                if(turn.equals("X")){
-                    turn = "O";
-                    System.out.println(
-                            "Au tour de " + player2.getName() + ". Entre un nombre pour placer " + turn + " :"
-                    );
-                }
-                else{
-                    turn = "X";
-                    System.out.println(
-                            "Au tour de " + player1.getName() + ". Entre un nombre pour placer " + turn + " :"
-                    );
-                }
-
                 printBoard();
                 winner = checkWinner();
+
+                if(turn.equals("X") && winner == null){
+                    turn = "O";
+                    System.out.println(
+                            "Au tour de " + player2.getName() + ". Entrer un nombre pour placer " + turn + " :"
+                    );
+                }
+                else if (turn.equals("O") && winner == null){
+                    turn = "X";
+                    System.out.println(
+                            "Au tour de " + player1.getName() + ". Entrer un nombre pour placer " + turn + " :"
+                    );
+                }
+
             }
             else{
-                System.out.println("Case déjà remplie. Sélectionne une autre case :");
+                System.out.println("Case déjà remplie. Sélectionnez une autre case :");
             }
 
         }
 
         //si personne ne gagne
         if(winner.equalsIgnoreCase("draw")){
-            System.out.println("Egalité ! Merci d'avoir joué.");
+            System.out.println("Egalité ! Merci d'avoir joué ( vous etes tout les deux des crackes");
         }
 
         //message pour le gagnant
