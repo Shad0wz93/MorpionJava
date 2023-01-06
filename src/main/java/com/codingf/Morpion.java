@@ -108,18 +108,18 @@ public class Morpion {
 
         while(winner == null){
             int numInput;
-
+            //Si mauvais chiffre utilisé reessayez
             try{
                 numInput = in.nextInt();
 
                 if(!(numInput>0 && numInput <= 9)){
-                    System.out.println("Invalide. Reessayez :");
+                    System.out.println("Invalide. Réessayez :");
                     continue;
                 }
             }
-
+            //si lettre selectionnée ressayez
             catch(InputMismatchException e){
-                System.out.println("Invalide. Reessayez :");
+                System.out.println("Invalide. Réessayez :");
                 break;
 
             }
