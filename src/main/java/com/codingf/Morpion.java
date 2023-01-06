@@ -62,7 +62,7 @@ public class Morpion {
         }
 
         System.out.println(
-                turn + "'s turn. Enter a slot number to place " + turn + " in :"
+                "Au tour de " + turn + ". Entre un nombre pour placer " + turn + " :"
         );
 
         return null;
