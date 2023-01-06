@@ -125,7 +125,6 @@ public class Morpion {
             }
 
             //décide du tour entre X et O
-            boolean player1Turn = true;
             if(board[numInput - 1].equals(String.valueOf(numInput))){
                 board[numInput - 1] = turn;
 
