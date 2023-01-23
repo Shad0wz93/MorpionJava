@@ -178,12 +178,12 @@ public class Morpion {
                 System.out.println("Félicitations ! " + winner + " gagne la partie. Merci d'avoir jouez !");
             }
 
-            System.out.println("voulez-vous continuer ? :");
+            System.out.println("voulez-vous continuer (y/n)?  :");
             Scanner scanner = new Scanner(System.in);
             String lettre = scanner.nextLine();
-            if (Objects.equals(lettre, "non")) {
+            if (lettre.toLowerCase().equals("n")) {
                 tryagain = false;
-            } else if (Objects.equals(lettre, "yes")) {
+            } else if (lettre.toLowerCase().equals("y")) {
                 tryagain = true;
                 winner = null;
             } else {
